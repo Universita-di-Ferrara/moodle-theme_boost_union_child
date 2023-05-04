@@ -1,0 +1,244 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_boost_union/login
+
+    Boost Union Login page template
+
+    Example context (json):
+    {
+        "output": {
+            "doctype": "<!DOCTYPE html>",
+            "page_title": "Login page",
+            "favicon": "favicon.ico",
+            "main_content": "<h1>Headers keep HTML validators happy</h1>"
+        }
+    }
+}}
+{{!
+    This template is based on theme_boost/login
+
+    Modifications compared to this template:
+    * Include theme_boost_union/footnote template
+    * Include theme_boost_union/footer template instead of theme_boost/footer
+    * Added the possibility to show info banners.
+    * Added the login background image text.
+}}
+{{> theme_boost/head }}
+
+<body {{{ bodyattributes }}}>
+{{> core/local/toast/wrapper}}
+
+<div id="page-wrapper">
+
+    {{{ output.standard_top_of_body_html }}}
+    <div id="page" class="container-fluid pt-5 mt-0">
+        <div id="page-content" class="row">
+            <div id="region-main-box" class="col-12">
+                <section id="region-main" class="col-12 h-100" aria-label="{{#str}}content{{/str}}">
+                   {{> theme_boost_union/infobanners }}
+
+                <div class="login-wrapper {{loginwrapperclass}}">
+                    {{!
+This file is part of Moodle - http://moodle.org/
+
+Moodle is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Moodle is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Moodle. If not, see
+<http: //www.gnu.org/licenses />.
+}}
+{{!
+@template core/loginform
+
+Moodle template for the login page.
+
+Context variables required for this template:
+* autofocusform: Auto focus on form ?,
+* canloginasguest - Is guest login allowed?,
+* canloginbyemail - Is login by email allowed?,
+* cansignup - Signup allowed?,
+* cookieshelpicon - cookies help icon details
+* error - Any errors in the form?,
+* forgotpasswordurl - Forgot password url,
+* hasidentityproviders - Flag, set to true to hide identity providers,
+* hasinstructions - Flag, set to true to show instructions,
+* identityproviders - List of identiy providers,
+* instructions - Instructions,
+* instructionsformat - Format of instructions,
+* loginurl - Login url,
+* signupurl - Signup url,
+* errorformatted - Formatted error,
+* logourl - Flag, logo url,
+* sitename - Name of site.,
+* logintoken - Random token to protect login request.,
+* maintenance - Maintenance message
+
+Example context (json):
+{
+"autofocusform": false,
+"canloginasguest": "1",
+"canloginbyemail": false,
+"cansignup": true,
+"cookieshelpicon": {
+"heading": "Cookies must be enabled in your browser",
+"text": "<div class=\"no-overflow\">Two cookies are used on this site. Both died..</div>",
+"icon": {
+"attributes": [
+{
+"name": "class",
+"value": "iconhelp"
+},
+{
+"name": "alt",
+"value": "Help with Cookies must be enabled in your browser"
+},
+{
+"name": "title",
+"value": "Help with Cookies must be enabled in your browser"
+},
+{
+"name": "src",
+"value": "http://localhost/stable_master/theme/image.php?theme=boost&component=core&image=help"
+}
+]
+},
+"linktext": null,
+"title": "Help with Cookies must be enabled in your browser",
+"url": "http://localhost/stable_master/help.php?component=core&identifier=cookiesenabled&lang=en",
+"ltr": true
+},
+"error": "",
+"forgotpasswordurl": "http://localhost/stable_master/login/forgot_password.php",
+"hasidentityproviders": false,
+"hasinstructions": true,
+"identityproviders": [],
+"instructions": "For full access to this site, you first need to create an account.",
+"instructionsformat": "1",
+"loginurl": "http://localhost/stable_master/login/index.php",
+"signupurl": "http://localhost/stable_master/login/signup.php",
+"cookieshelpiconformatted": "",
+"errorformatted": "",
+"logourl": false,
+"sitename": "Beer & Chips",
+"logintoken": "randomstring",
+"maintenance": "For full access to this site, you need to login in as an admin.",
+"languagemenu": "Choose language"
+}
+}}
+
+
+<style>
+
+    body#page-login-index>div#page-wrapper  {overflow:scroll;}
+
+    nav.navbar .logo img {
+        max-height: 52px;
+    }
+
+    #block-login,
+    .site-name {
+        display: none !important;
+    }
+
+    .sem_cstm_btn {
+        padding: 10px 30px 10px 30px;
+    }
+
+    button {
+        border-radius: 26px;
+    }
+
+    .card {
+          background-color: #fff;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
+            padding: 30px !important;
+            border-radius: 26px;
+    }
+
+   
+
+    .navbar .nav>li>a {
+        color: #ffffff !important;
+        text-shadow: none;
+        padding: 10px 18px;
+    }
+
+    .potentialidp {
+        display: none !important;
+    }
+.login-wrapper {height:auto;}
+
+</style>
+
+<div id="loginForm-container">
+    <span class="notifications" id="user-notifications"></span>
+    <div class="card" id="loginForm">
+        <div class="card-body">
+          
+                <div class="subcontent">
+                    
+                    <p style="text-align:center;font-size:14px;"><a href="{{wwwroot}}/auth/shibboleth"><img
+                                src="{{output.get_compact_logo_url}}" alt="mydesk-small.png"></a></p>
+                    <p style="text-align:center;font-size:14px;"><a
+                            href="{{wwwroot}}/auth/shibboleth/"><button
+                                style="padding: 10px 30px 10px 30px; font-size:14px;">Fai login</button></a>
+                    </p>
+                    <p style="text-align:center;font-size:14px;font-weight: 400;">Usando le credenziali
+                        della posta di Unife o Spid</p>
+                    <p style="text-align:center;font-size:14px;">oppure</p>
+                    <p style="text-align:center;font-size:14px;font-weight: 600; text-decoration:underline; color:#7676d0; cursor:pointer"
+                        onclick="loginForm()">Usa altre credenziali<br></p>
+                </div>
+         
+        </div>
+                    {{{ output.main_content }}}
+                    
+                </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    {{# loginbackgroundimagetext }}
+        <div class="container-fluid">
+            <div class="row justify-content-end no-gutters mx-3 my-2" id="loginbackgroundimagetext">
+                <span class="small d-none d-md-inline text-{{loginbackgroundimagetextcolor}}">
+                    {{loginbackgroundimagetext}}
+                </span>
+            </div>
+        </div>
+    {{/ loginbackgroundimagetext }}
+    {{> theme_boost_union/footer }}
+    {{> theme_boost_union/footnote }}
+</div>
+
+</body>
+</html>
+{{#js}}
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader'], function() {
+  M.util.js_complete('theme_boost/loader');
+});
+{{/js}}
