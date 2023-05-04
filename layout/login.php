@@ -40,8 +40,10 @@ $bodyattributes = $OUTPUT->body_attributes();
 list($loginbackgroundimagetext, $loginbackgroundimagetextcolor) = theme_boost_union_get_loginbackgroundimage_text();
 
 $templatecontext = [
-        'wwwroot' => $CFG->wwwroot,	
-        
+    'wwwroot' => $CFG->wwwroot,	
+    //'siteFullName' => $SITE->fullname,
+    // {{output.get_compact_logo_url}}
+    // {{output.get_logo_url}}
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'bodyattributes' => $bodyattributes,
