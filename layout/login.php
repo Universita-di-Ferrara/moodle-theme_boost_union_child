@@ -34,7 +34,9 @@
 
 
 defined('MOODLE_INTERNAL') || die();
-$percorsoIncludes = $_SERVER["DOCUMENT_ROOT"].'/moodle401/theme/boost_union/layout/includes';
+$percorsoIncludes = $CFG->dirroot.'/theme/boost_union/layout/includes';
+
+// $percorsoIncludes = $_SERVER["DOCUMENT_ROOT"].'/moodle401/theme/boost_union/layout/includes';
 
 $bodyattributes = $OUTPUT->body_attributes();
 list($loginbackgroundimagetext, $loginbackgroundimagetextcolor) = theme_boost_union_get_loginbackgroundimage_text();
